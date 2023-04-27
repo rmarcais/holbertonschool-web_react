@@ -1,0 +1,3 @@
+nodes_modules
+*-main*.js
+package-lock.json
