@@ -40,7 +40,3 @@ class StudentClass implements IStudentClass {
     return this.firstName;
   }
 }
-
-const a = new StudentClass('John', 'Doe');
-console.log(a.workOnHomework());
-console.log(a.displayName());
