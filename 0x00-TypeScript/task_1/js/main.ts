@@ -19,32 +19,28 @@ function printTeacher(firstName: string, lastName: string): string {
   return `${firstName.charAt(0)}. ${lastName}`;
 }
 
-//Example1
-const teacher3: Teacher = {
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false,
-};
-console.log(teacher3);
-
-//Exemple2
-const director1: Directors = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
-};
-console.log(director1);
-
-//Exemple3
-let myFunc: printTeacherFunction;
-
-myFunc = (firstName: string, lastName: string): string => {
-  return `${firstName.charAt(0)}. ${lastName}`;
+interface StudentClassConstructor {
+  new (firstName: string, lastName: string): IStudentClass;
 }
 
-console.log(myFunc('James', 'Bond'));
-console.log(printTeacher('John', 'Doe'));
+interface IStudentClass {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+class StudentClass implements IStudentClass {
+
+  constructor(private firstName: string, private lastName: string) {}
+
+  workOnHomework() {
+    return 'Currently working';
+  }
+
+  displayName() {
+    return this.firstName;
+  }
+}
+
+const a = new StudentClass('John', 'Doe');
+console.log(a.workOnHomework());
+console.log(a.displayName());
