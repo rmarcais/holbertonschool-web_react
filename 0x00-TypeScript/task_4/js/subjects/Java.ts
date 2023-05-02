@@ -9,7 +9,7 @@ namespace Subjects {
     }
 
     getAvailableTeacher(): string {
-      if (this.teacher.experienceTeachingJava) return `Available teacher: ${this.teacher.firstName}`;
+      if (this.teacher && this.teacher.experienceTeachingJava) return `Available teacher: ${this.teacher.firstName}`;
       return 'No available teacher';
     }
   }
