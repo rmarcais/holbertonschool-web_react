@@ -7,4 +7,11 @@ module.exports = {
         filename: "bundle.js"
     },
     mode: "production",
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+            },
+        ]
+    },
 }
