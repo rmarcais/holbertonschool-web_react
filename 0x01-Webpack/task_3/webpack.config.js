@@ -23,6 +23,7 @@ module.exports = {
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, "public")
     },
+    devtool: 'inline-source-map',
     devServer: {
         port: 8564,
         static: {
