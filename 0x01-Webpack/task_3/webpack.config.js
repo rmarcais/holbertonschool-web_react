@@ -21,12 +21,12 @@ module.exports = {
     },
     output: {
         filename: "[name].bundle.js",
-        path: path.join(__dirname, "public")
+        path: path.resolve(__dirname, "public")
     },
     devServer: {
         port: 8564,
         static: {
-           directory: path.join(__dirname, "public")
+           directory: path.resolve(__dirname, "public")
         }
     },
     module: {
