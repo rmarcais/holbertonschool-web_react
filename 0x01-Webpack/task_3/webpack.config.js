@@ -5,19 +5,9 @@ const path = require('path');
 module.exports = {
     mode: "development",
     entry: {
-        header: {
-            import: './modules/header/header.js',
-            dependOn: 'shared'
-        },
-        body: {
-            import: './modules/body/body.js',
-            dependOn: 'shared'
-        },
-        footer: {
-            import: './modules/footer/footer.js',
-            dependOn: 'shared'
-        },
-        shared: 'jquery'
+        header: './modules/header/header.js',
+        body: './modules/body/body.js',
+        footer: './modules/footer/footer.js',
     },
     output: {
         filename: "[name].bundle.js",
@@ -26,7 +16,9 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         port: 8564,
-        contentBase: path.resolve(__dirname, "public")
+        static: {
+           directory: path.resolve(__dirname, "public")
+        }
     },
     module: {
         rules: [
