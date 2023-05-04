@@ -1,48 +1,44 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const path = require('path');
 
 module.exports = {
-    mode: "development",
+    mode: 'development',
     entry: {
-        all: ['./modules/header/header.js', './modules/body/body.js', './modules/footer/footer.js']
+      all: ['./modules/header/header.js', './modules/body/body.js', './modules/footer/footer.js']
     },
     output: {
         filename: "[name].bundle.js",
-        path: path.resolve(__dirname, "public")
+        path: path.resolve(__dirname, './public')
     },
-    devtool: 'inline-source-map',
     devServer: {
+        contentBase: './public',
         port: 8564,
-        static: {
-           directory: path.resolve(__dirname, "public")
-        }
+        open: true
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Holberton Dashboard',
+        }),
+        new CleanWebpackPlugin()
+    ],
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {
                 test: /\.css$/i,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
+                use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.(gif|png|jpe?g|svg)$/i,
+                test: /\.(png|svg|jpe?g|gif)$/i,
                 type: 'asset/resource',
-                loader: 'image-webpack-loader'
-            }
-        ]
+                loader: 'image-webpack-loader',
+            },
+        ],
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'task_3'
-        }),
-        new CleanWebpackPlugin()
-    ],
     optimization: {
         splitChunks: {
-          chunks: 'all',
+            chunks: 'all',
         },
     },
-}
+};
