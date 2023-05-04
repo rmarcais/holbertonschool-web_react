@@ -5,9 +5,7 @@ const path = require('path');
 module.exports = {
     mode: "development",
     entry: {
-        header: './modules/header/header.js',
-        body: './modules/body/body.js',
-        footer: './modules/footer/footer.js',
+        all: ['./modules/header/header.js', './modules/body/body.js', './modules/footer/footer.js']
     },
     output: {
         filename: "[name].bundle.js",
@@ -32,6 +30,7 @@ module.exports = {
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
                 type: 'asset/resource',
+                loader: 'image-webpack-loader'
             }
         ]
     },
