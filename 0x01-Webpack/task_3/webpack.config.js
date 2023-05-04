@@ -15,9 +15,10 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './public',
         port: 8564,
-        open: true
+        static: {
+           directory: './public'
+        }
     },
     module: {
         rules: [
