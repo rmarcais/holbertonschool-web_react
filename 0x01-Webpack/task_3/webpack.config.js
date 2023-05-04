@@ -16,7 +16,10 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         port: 8564,
-        contentBase: path.resolve(__dirname, "public")  
+        static: {
+           directory: path.resolve(__dirname, "public")
+        },
+        open: true
     },
     module: {
         rules: [
