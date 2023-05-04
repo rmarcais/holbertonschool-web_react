@@ -36,7 +36,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'task_3'
+        }),
         new CleanWebpackPlugin()
     ],
     optimization: {
