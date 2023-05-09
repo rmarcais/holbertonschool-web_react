@@ -2,7 +2,7 @@
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 98vh;
+  min-height: 100%;
 }
 
 .App-header {
@@ -20,13 +20,16 @@
 
 .App-body {
   margin-top: 1rem;
-  height: max-content;
+  min-height: 100%;
   padding-left: 3rem;
 }
 
 .App-footer {
   text-align: center;
   font-style: italic;
-  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
   border-top: solid #e11d3f;
 }
