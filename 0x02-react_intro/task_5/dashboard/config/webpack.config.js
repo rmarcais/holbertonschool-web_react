@@ -11,8 +11,8 @@ module.exports = {
         port: 8564,
         hot: true,
         static: {
-           directory: '../dist'
-        }
+           directory: path.resolve(__dirname, '../dist')
+        },
     },
     module: {
         rules: [
@@ -34,6 +34,13 @@ module.exports = {
                         },
                     }
                 ]
+            },
+            {
+                test: /\.(js|jsx)$/i,
+                exclude: /nodes_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
             }
         ]
     },
