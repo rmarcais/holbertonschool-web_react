@@ -15,6 +15,7 @@ function App() {
         <input type="email" id="email" name="email"></input>
         <label for="password">Last name:</label>
         <input type="password" id="password" name="password"></input>
+        <button type='button'>OK</button>
       </div>
       <footer className="App-footer">
         <p>Copyright {getFullYear()} - {getFooterCopy(true)}</p>
