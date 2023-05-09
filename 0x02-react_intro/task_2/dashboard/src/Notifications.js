@@ -21,7 +21,7 @@ export default function Notifications() {
           <img src={closeIcon} alt='Close icon' width={10}/>
         </button>
         <ul>
-          <li data-priority='default'>New course availabl</li>
+          <li data-priority='default'>New course available</li>
           <li data-priority='urgent'>New resume available</li>
           <li data-priority='urgent' dangerouslySetInnerHTML={{__html: getLatestNotification()}}></li>
         </ul>
