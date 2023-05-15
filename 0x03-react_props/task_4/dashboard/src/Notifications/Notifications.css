@@ -1,6 +1,14 @@
+.menuItem {
+    text-align: right;
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+}
+
 .Notifications {
-    position: relative;
+    position: absolute;
+    right: 1rem;
     padding: 1rem;
+    width: 25rem;
     border: dashed #e11d3f;
 }
 

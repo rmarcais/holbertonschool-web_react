@@ -13,6 +13,6 @@ describe('Tests the NotificationItem component', () => {
     });
     it('Tests that by passing a dummy html prop, it renders the correct html', () => {
         const wrapper = shallow(<NotificationItem html={{ __html: '<u>test</u>' }}/>);
-        expect(wrapper.contains(<li dangerouslySetInnerHTML={{ __html: '<u>test</u>' }}></li>)).toBe(true);
+        expect(wrapper.contains(<li dangerouslySetInnerHTML={{ __html: '<u>test</u>' }} data-notification-type='default'></li>)).toBe(true);
     });
 });

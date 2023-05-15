@@ -23,4 +23,19 @@ describe('Tests the App component', () => {
         const wrapper = shallow(<App />);
         expect(wrapper.find('Footer')).toHaveLength(1);
     });
+    it('checks that CourseList is not displayed', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.find('CourseList')).toHaveLength(0);
+    });
+});
+
+describe('Tests the App component when isLoggedIn is true', () => {
+    it('Tests that the Login component is not included.', () => {
+        const wrapper = shallow(<App isLoggedIn={true}/>);
+        expect(wrapper.find('Login')).toHaveLength(0);
+    });
+    it('should contain the Notifications component', () => {
+        const wrapper = shallow(<App isLoggedIn={true}/>);
+        expect(wrapper.find('CourseList')).toHaveLength(1);
+    });
 });
