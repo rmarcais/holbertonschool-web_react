@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --mode development --config config/webpack.config.js",
     "build": "webpack --config config/webpack.config.js",
     "test": "jest",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --watchAll"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -43,7 +43,6 @@
     },
     "setupFiles": [
       "<rootDir>/config/setupTests.js"
-    ],
-    "watchPathIgnorePatterns": ["<rootDir>/src/App/App.test.js"]
+    ]
   }
 }
