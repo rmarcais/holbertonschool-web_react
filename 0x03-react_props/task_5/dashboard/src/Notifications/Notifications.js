@@ -30,11 +30,11 @@ function Notifications(props) {
       </div>
       {props.displayDrawer ? (
         <div className='Notifications'>
-          <p>Here is the list of notifications</p>
+          {props.listNotifications.length === 0 ? content : (<p>Here is the list of notifications</p>)}
           <button aria-label='Close' onClick={handleClick} style={buttonStyle}>
             <img src={closeIcon} alt='Close icon' width={10}/>
           </button>
-          {props.listNotifications.length === 0 ? content : (<ul>{content}</ul>)}
+          {props.listNotifications.length === 0 ? null : (<ul>{content}</ul>)}
         </div>
       ) : null}
     </>

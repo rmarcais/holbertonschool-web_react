@@ -9,7 +9,7 @@ describe('Tests the NotificationItem component', () => {
     });
     it('Tests that by passing dummy type and value props, it renders the correct html', () => {
         const wrapper = shallow(<NotificationItem value='test' type='default' />);
-        expect(wrapper.contains(<li data-notification-type='default'>test</li>)).toBe(true);
+        expect(wrapper.contains(<li data-notification-type='default' dangerouslySetInnerHTML={null}>test</li>)).toBe(true);
     });
     it('Tests that by passing a dummy html prop, it renders the correct html', () => {
         const wrapper = shallow(<NotificationItem html={{ __html: '<u>test</u>' }}/>);
