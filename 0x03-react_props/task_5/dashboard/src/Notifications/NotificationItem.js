@@ -15,5 +15,6 @@ NotificationItem.propTypes = {
 };
 
 NotificationItem.defaultProps = {
-    type: 'default'
+    type: 'default',
+    html: null
 };
