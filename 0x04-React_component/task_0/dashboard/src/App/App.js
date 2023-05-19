@@ -46,28 +46,30 @@ const listNotifications = [
   }
 ];
 
-function App(props) {
-  const footerText = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`
-  let body;
+class App extends React.Component {
+  render() {
+    const footerText = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`
+    let body;
 
-  if (props.isLoggedIn) {
-    body = <CourseList listCourses={listCourses}/>;
-  } else {
-    body = <Login text='Login to access the full dashboard' />
-  }
-  return (
-    <>
-      <Notifications listNotifications={listNotifications}/>
-      <div className="App">
-        <Header text='School dashboard' src={logo} alt='Holberton logo'/>
-        <div className="App-body">
-          {body}
+    if (this.props.isLoggedIn) {
+      body = <CourseList listCourses={listCourses}/>;
+    } else {
+      body = <Login text='Login to access the full dashboard' />
+    }
+    return (
+      <>
+        <Notifications listNotifications={listNotifications}/>
+        <div className="App">
+          <Header text='School dashboard' src={logo} alt='Holberton logo'/>
+          <div className="App-body">
+            {body}
+          </div>
+          <Footer text={footerText} />
         </div>
-        <Footer text={footerText} />
-      </div>
-    </>
-    
-  );
+      </>
+
+    );
+  }
 }
 
 App.propTypes = {
