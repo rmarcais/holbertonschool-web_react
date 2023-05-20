@@ -24,6 +24,5 @@ describe('Tests the NotificationItem component', () => {
         const wrapper = shallow(<NotificationItem id={id} type='default' markAsRead={markAsRead} />);
         wrapper.find('li').simulate('click');
         expect(markAsRead).toHaveBeenCalledWith(id);
-
     });
 });

@@ -8,6 +8,7 @@ import NotificationItem from './NotificationItem';
 class Notifications extends React.Component {
   constructor(props) {
     super(props);
+    this.markAsRead = this.markAsRead.bind(this);
   }
 
   markAsRead(id) {
