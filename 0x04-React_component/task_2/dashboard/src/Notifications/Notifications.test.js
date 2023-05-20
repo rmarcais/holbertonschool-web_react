@@ -72,8 +72,10 @@ describe('Tests the Notifications component', () => {
         expect(p.html()).toEqual('<li data-notification-type="default">New course available</li>');
     });
     it('Tests that when calling the function markAsRead on an instance of the component, the spy is being called with the right message', () => {
-        const mockConsole = jest.spyOn('console', 'log').mockImplementation(() => {});
-        const p = wrapper.find('.Notifications NotificationItem:first-child');
-        expect(p.html()).toEqual('<li data-notification-type="default">New course available</li>');
+        const mockConsole = jest.spyOn(console, 'log').mockImplementation(() => {});
+        const wrapper = shallow(<Notifications displayDrawer={true} />);
+        wrapper.instance().markAsRead(1);
+        expect(mockConsole).toHaveBeenCalledWith('Notification 1 has been marked as read');
+        jest.restoreAllMocks();
     });
 });
