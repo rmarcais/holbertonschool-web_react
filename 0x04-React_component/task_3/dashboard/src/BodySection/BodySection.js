@@ -13,11 +13,18 @@ class BodySection extends React.Component {
 }
 
 BodySection.propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
+    children: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.arrayOf(PropTypes.element),
+        PropTypes.string,
+        PropTypes.number,
+    ])
 };
 
 BodySection.defaultProps = {
-    title: null
+    title: null,
+    children: null
 };
 
 export default BodySection;
