@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types'
 import logo from '../assets/holberton_logo.jpg';
 import { getFullYear, getFooterCopy } from '../utils/utils';
@@ -32,7 +32,7 @@ class App extends React.Component {
       body = <Login text='Login to access the full dashboard' />
     }
     return (
-      <>
+      <Fragment>
         <Notifications listNotifications={listNotifications}/>
         <div className="App">
           <Header text='School dashboard' src={logo} alt='Holberton logo'/>
@@ -41,7 +41,7 @@ class App extends React.Component {
           </div>
           <Footer text={footerText} />
         </div>
-      </>
+      </Fragment>
 
     );
   }
