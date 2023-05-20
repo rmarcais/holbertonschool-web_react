@@ -8,6 +8,8 @@ import Login from '../Login/Login';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
+import BodySection from '../BodySection/BodySection';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import './App.css';
 
 const listCourses = [
@@ -71,20 +73,24 @@ class App extends React.Component {
 
   render() {
     const footerText = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`
-    let body;
-
-    if (this.props.isLoggedIn) {
-      body = <CourseList listCourses={listCourses}/>;
-    } else {
-      body = <Login text='Login to access the full dashboard' />
-    }
     return (
       <>
         <Notifications listNotifications={listNotifications}/>
         <div className="App">
           <Header text='School dashboard' src={logo} alt='Holberton logo'/>
           <div className="App-body">
-            {body}
+            {this.props.isLoggedIn ? (
+              <BodySectionWithMarginBottom title="Course list ">
+                <CourseList listCourses={listCourses}/>
+              </BodySectionWithMarginBottom> 
+            ) : (
+              <BodySectionWithMarginBottom title="Log in to continue">
+                <Login text="Login to access the full dashboard" />
+              </BodySectionWithMarginBottom>
+            )}
+            <BodySection title="News from the School">
+              <p>This is some random text</p>
+            </BodySection>
           </div>
           <Footer text={footerText} />
         </div>
