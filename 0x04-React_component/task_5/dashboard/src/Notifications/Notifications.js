@@ -15,6 +15,11 @@ class Notifications extends React.Component {
     console.log(`Notification ${id} has been marked as read`);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.listNotifications.length < nextProps.listNotifications.length) return true;
+    return false;
+  }
+
   render() {
     const buttonStyle = {
       background: 'transparent',
