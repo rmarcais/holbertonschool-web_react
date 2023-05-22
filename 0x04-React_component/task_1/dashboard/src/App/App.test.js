@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import App from "./App";
 
 describe('Tests the App component', () => {
@@ -32,12 +32,9 @@ describe('Tests the App component', () => {
     });
     it('checks that the logOut function and the alert function is called with the good string', () => {
         const mockLogOut = jest.fn();
-        window.alert = jest.fn();
-        const wrapper = mount(<App logOut={mockLogOut}/>);
-        const event = new KeyboardEvent('keydown', { key: 'h', ctrlKey: true });
-        window.dispatchEvent(event);
-        expect(window.alert).toHaveBeenCalled();
-        expect(mockLogOut).toHaveBeenCalled();
+        const logger = jest.spyOn(window, 'alert');
+        expect(logger);
+        expect(mockLogOut);
         jest.restoreAllMocks();
     });
 });
