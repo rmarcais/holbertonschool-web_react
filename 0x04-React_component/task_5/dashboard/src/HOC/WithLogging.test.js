@@ -6,7 +6,7 @@ import Login from '../Login/Login';
 describe('Tests the HOC WithLogging', () => {
     let mockConsole;
     beforeEach(() => {
-        mockConsole = jest.spyOn(console, 'log');
+        mockConsole = jest.spyOn(console, 'log').mockImplementation(() => {});
     });
     afterEach(() => {
         jest.restoreAllMocks();

@@ -78,4 +78,28 @@ describe('Tests the Notifications component', () => {
         expect(mockConsole).toHaveBeenCalledWith('Notification 1 has been marked as read');
         jest.restoreAllMocks();
     });
+    it('Tests that when updating the props of the component with the same list, the component doesn’t rerender', () => {
+        const renderSpy = jest.spyOn(Notifications.prototype, 'render');
+        const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
+
+        wrapper.setProps({ listNotifications: listNotifications });
+    
+        expect(renderSpy).toHaveBeenCalledTimes(1);
+        jest.restoreAllMocks();
+    });
+    it('Tests that when updating the props of the component with a longer list, the component does rerender', () => {
+        const updatedList = [
+            {id: 1,type: 'default',value: 'New course available'},
+            {id: 2,type: 'urgent',value: 'New resume available'},
+            {id: 3,type: 'urgent',html: {__html: '<u>test</u>'}},
+            {id: 4,type: 'urgent',html: {__html: '<u>test</u>'}}
+        ];
+        const renderSpy = jest.spyOn(Notifications.prototype, 'render');
+        const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
+
+        wrapper.setProps({ listNotifications: updatedList });
+    
+        expect(renderSpy).toHaveBeenCalledTimes(2);
+        jest.restoreAllMocks();
+    });
 });
