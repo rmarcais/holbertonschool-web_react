@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class NotificationItem extends React.Component {
+export default class NotificationItem extends React.PureComponent {
     render() {
         return (
             <li data-notification-type={this.props.type} dangerouslySetInnerHTML={this.props.html} onClick={() => this.props.markAsRead(this.props.id)}>
