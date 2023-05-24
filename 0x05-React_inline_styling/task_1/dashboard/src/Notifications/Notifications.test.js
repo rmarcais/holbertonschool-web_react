@@ -13,17 +13,17 @@ describe('Tests the Notifications component with an empty array', () => {
     });
     it('Tests that Notifications renders the good text', () => {
         const wrapper = shallow(<Notifications displayDrawer={true}/>);
-        const p = wrapper.find('#Notifications p');
-        expect(wrapper.find('#Notifications p')).toHaveLength(1);
+        const p = wrapper.find('[className^="notifications"] p');
+        expect(wrapper.find('[className^="notifications"] p')).toHaveLength(1);
         expect(p.text()).toBe('No new notification for now');
     });
     it('Tests that the menu item is being displayed when displayDrawer is false', () => {
         const wrapper = shallow(<Notifications />);
         expect(wrapper.find('[className^="menuItem"]')).toHaveLength(1);
     });
-    it('Tests that the div#Notifications is not being displayed when displayDrawer is false', () => {
+    it('Tests that the .Notifications is not being displayed when displayDrawer is false', () => {
         const wrapper = shallow(<Notifications />);
-        expect(wrapper.find('#Notifications')).toHaveLength(0);
+        expect(wrapper.find('[className^="notifications"]')).toHaveLength(0);
     });
     it('Tests that the menu item is being displayed when displayDrawer is true', () => {
         const wrapper = shallow(<Notifications displayDrawer={true}/>);
@@ -62,13 +62,13 @@ describe('Tests the Notifications component', () => {
     });
     it('Tests that Notifications renders the good text', () => {
         const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
-        const p = wrapper.find('#Notifications p');
-        expect(wrapper.find('#Notifications p')).toHaveLength(1);
+        const p = wrapper.find('[className^="notifications"] p');
+        expect(wrapper.find('[className^="notifications"] p')).toHaveLength(1);
         expect(p.text()).toBe('Here is the list of notifications');
     });
     it('Tests that the first NotificationItem element renders the right html', () => {
         const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
-        const p = wrapper.find('#Notifications NotificationItem:first-child');
+        const p = wrapper.find('[className^="notifications"] NotificationItem:first-child');
         expect(p.html()).toEqual('<li data-notification-type="default">New course available</li>');
     });
     it('Tests that when calling the function markAsRead on an instance of the component, the spy is being called with the right message', () => {
