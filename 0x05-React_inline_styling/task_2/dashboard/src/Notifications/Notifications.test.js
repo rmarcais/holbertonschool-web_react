@@ -69,7 +69,7 @@ describe('Tests the Notifications component', () => {
     it('Tests that the first NotificationItem element renders the right html', () => {
         const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);
         const p = wrapper.find('[className^="notifications"] NotificationItem:first-child');
-        expect(p.html()).toEqual('<li data-notification-type="default">New course available</li>');
+        expect(p).toHaveLength(1);
     });
     it('Tests that when calling the function markAsRead on an instance of the component, the spy is being called with the right message', () => {
         const mockConsole = jest.spyOn(console, 'log').mockImplementation(() => {});

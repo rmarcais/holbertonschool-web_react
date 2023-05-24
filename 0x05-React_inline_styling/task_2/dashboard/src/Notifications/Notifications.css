@@ -1,7 +1,0 @@
-#Notifications li[data-notification-type='default'] {
-    color: blue;
-}
-
-#Notifications li[data-notification-type='urgent'] {
-    color: red;
-}

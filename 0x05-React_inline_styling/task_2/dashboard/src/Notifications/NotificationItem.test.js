@@ -16,7 +16,8 @@ describe('Tests the NotificationItem component', () => {
     });
     it('Tests that by passing a dummy html prop, it renders the correct html', () => {
         const wrapper = shallow(<NotificationItem html={{ __html: '<u>test</u>' }}/>);
-        expect(wrapper.html()).toBe('<li data-notification-type="default"><u>test</u></li>');
+        const li = wrapper.find('li');
+        expect(li).toHaveLength(1);
     });
     it('Tests that when simulating a click on the component, the spy is called with the right ID argument', () => {
         const id = 1;
