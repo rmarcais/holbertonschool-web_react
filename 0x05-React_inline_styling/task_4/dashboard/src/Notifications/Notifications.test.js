@@ -27,11 +27,11 @@ describe('Tests the Notifications component with an empty array', () => {
     });
     it('Tests that the menu item is being displayed when displayDrawer is true', () => {
         const wrapper = shallow(<Notifications displayDrawer={true}/>);
-        expect(wrapper.find('[className^="menuItem"]')).toHaveLength(1);
+        expect(wrapper.find('[className^="hidden"]')).toHaveLength(1);
     });
     it('Tests that the menu item is being displayed when displayDrawer is true', () => {
         const wrapper = shallow(<Notifications displayDrawer={true}/>);
-        expect(wrapper.find('[className^="menuItem"]')).toHaveLength(1);
+        expect(wrapper.find('[className^="hidden"]')).toHaveLength(1);
     });
 });
 

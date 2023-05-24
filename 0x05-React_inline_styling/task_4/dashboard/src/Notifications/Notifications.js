@@ -28,6 +28,7 @@ class Notifications extends React.Component {
       top: 2,
       right: 2
     }
+    const menuItemStyle = css(this.props.displayDrawer ? styles.hidden : styles.menuItem);
     let content;
   
     if (this.props.listNotifications.length === 0) content = <p>No new notification for now</p>;
@@ -37,7 +38,7 @@ class Notifications extends React.Component {
     }
     return (
       <>
-        <div className={css(styles.menuItem)}>
+        <div className={menuItemStyle}>
           Your notifications
         </div>
         {this.props.displayDrawer ? (
@@ -64,11 +65,45 @@ Notifications.defaultProps = {
   listNotifications: []
 };
 
+const opacityAnimationFrames = {
+  '0%': {
+      opacity: 0.5,
+  },
+    '100%': {
+      opacity: 1,
+  },
+};
+
+const bounceAnimationFrames = {
+  '0%': {
+      transform: 'translateY(0px)',
+  },
+  '50%': {
+      transform: 'translateY(-5px)',
+  },
+  '100%': {
+      transform: 'translateY(5px)',
+  },
+};
+
 const styles = StyleSheet.create({
   menuItem: {
     textAlign: 'right',
     marginRight: '.5rem',
     marginBottom: '.5rem',
+    background: '#fff8f8',
+    float: 'right',
+    ':hover': {
+      cursor: 'pointer',
+      animationName: [opacityAnimationFrames, bounceAnimationFrames],
+      animationDuration: '1s, 0.5s',
+      animationTimingFunction: 'ease-in-out',
+      animationIterationCount: '3',
+    },
+  },
+
+  hidden: {
+    display: 'none'
   },
 
   notifications: {
@@ -96,7 +131,7 @@ const styles = StyleSheet.create({
     '@media (max-width: 900px)': {
       padding: 0,
     }
-  }
+  },
 });
 
 export default Notifications;
