@@ -1,6 +1,15 @@
 import React from "react";
 import { shallow } from 'enzyme';
 import CourseList from "./CourseList";
+import { StyleSheetTestUtils } from 'aphrodite';
+
+beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+});
+
+afterAll(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
 
 describe('Tests the CourseList component with an empty array', () => {
     it('Tests that CourseList renders without crashing', () => {
