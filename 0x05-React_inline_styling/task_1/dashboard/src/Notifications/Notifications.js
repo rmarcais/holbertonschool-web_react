@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
 import './Notifications.css';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItemShape from './NotificationItemShape';
@@ -37,11 +38,11 @@ class Notifications extends React.Component {
     }
     return (
       <>
-        <div className='menuItem'>
+        <div className={css(styles.menuItem)}>
           Your notifications
         </div>
         {this.props.displayDrawer ? (
-          <div className='Notifications'>
+          <div className={css(styles.notifications)} id="Notifications">
             {this.props.listNotifications.length === 0 ? content : (<p>Here is the list of notifications</p>)}
             <button aria-label='Close' onClick={() => console.log('Close button has been clicked')} style={buttonStyle}>
               <img src={closeIcon} alt='Close icon' width={10}/>
@@ -63,5 +64,21 @@ Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: []
 };
+
+const styles = StyleSheet.create({
+  menuItem: {
+    textAlign: 'right',
+    marginRight: '.5rem',
+    marginBottom: '.5rem',
+  },
+
+  notifications: {
+      position: 'absolute',
+      right: '1rem',
+      padding: '1rem',
+      width: '25rem',
+      border: 'dashed #e11d3f'
+  }
+});
 
 export default Notifications;
