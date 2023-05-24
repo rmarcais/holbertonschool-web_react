@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, css } from 'aphrodite';
 import PropTypes from 'prop-types'
 import logo from '../assets/holberton_logo.jpg';
 import { getFullYear, getFooterCopy } from '../utils/utils';
@@ -10,7 +11,6 @@ import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
 import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
-import './App.css';
 
 const listCourses = [
   {
@@ -76,9 +76,9 @@ class App extends React.Component {
     return (
       <>
         <Notifications listNotifications={listNotifications}/>
-        <div className="App">
+        <div className={css(styles.app)}>
           <Header text='School dashboard' src={logo} alt='Holberton logo'/>
-          <div className="App-body">
+          <div className={css(styles.body)}>
             {this.props.isLoggedIn ? (
               <BodySectionWithMarginBottom title="Course list ">
                 <CourseList listCourses={listCourses}/>
@@ -92,13 +92,38 @@ class App extends React.Component {
               <p>This is some random text</p>
             </BodySection>
           </div>
-          <Footer text={footerText} />
+          <div className={css(styles.footer)}>
+            <Footer text={footerText} />
+          </div>
         </div>
       </>
 
     );
   }
 }
+
+const styles = StyleSheet.create({
+  app: {
+    fontFamily: 'sans-serif',
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100%'
+  },
+  body: {
+    marginTop: '1rem',
+    minHeight: '100%',
+    padding: '0 3rem'
+  },
+  footer: {
+    textAlign: 'center',
+    fontStyle: 'italic',
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    left: 0,
+    borderTop: 'solid #e11d3f'
+  }
+});
 
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
