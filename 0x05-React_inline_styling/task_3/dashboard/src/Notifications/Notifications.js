@@ -41,12 +41,12 @@ class Notifications extends React.Component {
           Your notifications
         </div>
         {this.props.displayDrawer ? (
-          <div className={css(styles.notifications)} id="Notifications">
+          <div className={css(styles.notifications, styles.small)} id="Notifications">
             {this.props.listNotifications.length === 0 ? content : (<p>Here is the list of notifications</p>)}
             <button aria-label='Close' onClick={() => console.log('Close button has been clicked')} style={buttonStyle}>
               <img src={closeIcon} alt='Close icon' width={10}/>
             </button>
-            {this.props.listNotifications.length === 0 ? null : (<ul>{content}</ul>)}
+            {this.props.listNotifications.length === 0 ? null : (<ul className={css(styles.noPadding)}>{content}</ul>)}
           </div>
         ) : null}
       </>
@@ -75,8 +75,27 @@ const styles = StyleSheet.create({
       position: 'absolute',
       right: '1rem',
       padding: '1rem',
-      width: '25rem',
+      width: '20rem',
       border: 'dashed #e11d3f'
+  },
+  small: {
+    '@media (max-width: 900px)': {
+      padding: 0,
+      fontSize: 20,
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      border: 'none',
+      background: 'white',
+      zIndex: 10
+    }
+  },
+  noPadding: {
+    '@media (max-width: 900px)': {
+      padding: 0,
+    }
   }
 });
 

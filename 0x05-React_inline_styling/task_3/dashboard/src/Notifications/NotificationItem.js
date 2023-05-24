@@ -4,9 +4,10 @@ import { StyleSheet, css } from 'aphrodite';
 
 export default class NotificationItem extends React.PureComponent {
     render() {
-        const styleToApply = css(this.props.type == 'default' ? styles.default: styles.urgent);
+        const styleToApply = this.props.type == 'default' ? styles.default : styles.urgent;
+        const style = css(styleToApply, styles.small);
         return (
-            <li className={styleToApply} data-notification-type={this.props.type} dangerouslySetInnerHTML={this.props.html} onClick={() => this.props.markAsRead(this.props.id)}>
+            <li className={style} data-notification-type={this.props.type} dangerouslySetInnerHTML={this.props.html} onClick={() => this.props.markAsRead(this.props.id)}>
                 {this.props.value}
             </li>
         );
@@ -35,5 +36,13 @@ const styles = StyleSheet.create({
     },
     urgent: {
         color: 'red'
+    },
+    small: {
+        '@media (max-width: 900px)': {
+            padding: '10px 8px',
+            fontSize: 20,
+            listStyle: 'none',
+            borderBottom: 'solid black 1px'
+        }
     }
 });
