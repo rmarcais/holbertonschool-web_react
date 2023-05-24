@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
     let content;
+    const styles = {
+        backgroundColor: isHeader ? '#deb5b545': '#f5f5f5ab'
+    };
     
     if (isHeader) {
         if (!textSecondCell) {
@@ -24,7 +27,7 @@ function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
         );
     }
     return (
-        <tr>
+        <tr style={styles}>
             {content}
         </tr>
     );
