@@ -18,7 +18,7 @@ function CourseList({ listCourses }) {
     return (
         <table className={css(styles.courseList)} id="CourseList">
             <thead>
-                <CourseListRow className={css(styles.firstRow, styles.th)} textFirstCell="Available courses" isHeader={true}/>
+                <CourseListRow textFirstCell="Available courses" isHeader={true}/>
                 <CourseListRow textFirstCell="Course name" textSecondCell="Credit" isHeader={true}/>
             </thead>
             <tbody>
