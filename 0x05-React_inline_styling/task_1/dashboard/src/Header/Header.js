@@ -4,7 +4,7 @@ import { StyleSheet, css } from 'aphrodite';
 export default function Header(props) {
     return (
         <header className={css(styles.appHeader)}>
-            <img src={props.src} alt={props.alt} className={css(styles.appHeaderImg)}/>
+            <img src={props.src} alt={props.alt} className={css(styles.logo)}/>
             <h1>{props.text}</h1>
         </header>
     );
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         bordeBottom: 'solid #e11d3f'
     },
       
-    appHeaderImg: {
+    logo: {
         width: 250
     }
 });
