@@ -39,8 +39,8 @@ class Notifications extends React.Component {
     }
     return (
       <>
-        <div className={menuItemStyle} onClick={() => {this.props.handleDisplayDrawer()}}>
-          Your notifications
+        <div className={menuItemStyle}>
+          <p onClick={() => {this.props.handleDisplayDrawer()}}>Your notifications</p>
         </div>
         {this.props.displayDrawer ? (
           <div className={css(styles.notifications, styles.small)} id="Notifications">

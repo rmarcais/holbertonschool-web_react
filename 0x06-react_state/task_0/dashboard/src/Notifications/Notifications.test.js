@@ -92,7 +92,7 @@ describe('Tests the Notifications component', () => {
         const handleDisplayDrawer = jest.fn();
         const wrapper = shallow(<Notifications listNotifications={listNotifications}
                                                handleDisplayDrawer={handleDisplayDrawer}/>);
-        const menuItem = wrapper.find('[className^="menuItem"]');
+        const menuItem = wrapper.find('[className^="menuItem"] p');
         menuItem.simulate('click');
         expect(handleDisplayDrawer).toHaveBeenCalledTimes(1);
         handleDisplayDrawer.mockClear();
