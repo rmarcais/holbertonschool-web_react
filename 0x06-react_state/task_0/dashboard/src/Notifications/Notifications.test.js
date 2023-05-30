@@ -98,6 +98,7 @@ describe('Tests the Notifications component', () => {
         handleDisplayDrawer.mockClear();
     });
     it('checks that clicking on the button calls handleHideDrawer', () => {
+        const mockConsole = jest.spyOn(console, 'log').mockImplementation(() => {});
         const handleHideDrawer = jest.fn();
         const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}
                                                handleHideDrawer={handleHideDrawer}/>);
@@ -105,5 +106,6 @@ describe('Tests the Notifications component', () => {
         button.simulate('click');
         expect(handleHideDrawer).toHaveBeenCalledTimes(1);
         handleHideDrawer.mockClear();
+        jest.restoreAllMocks();
     });
 });
