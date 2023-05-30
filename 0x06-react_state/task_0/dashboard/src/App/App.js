@@ -46,11 +46,11 @@ class App extends React.Component {
   }
 
   handleDisplayDrawer() {
-    this.setState({displayDrawer: true});
+    this.setState({ displayDrawer: true });
   }
 
   handleHideDrawer() {
-    this.setState({displayDrawer: false});
+    this.setState({ displayDrawer: false });
   }
 
   componentDidMount() {
