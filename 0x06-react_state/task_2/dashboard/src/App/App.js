@@ -43,7 +43,7 @@ class App extends React.Component {
   handleKey(e) {
     const isCtrl = e.ctrlKey;
 
-    if (isCtrl && e.keyCode == 72) {
+    if (isCtrl && e.key === 'h') {
       e.preventDefault();
       alert('Logging you out');
       this.logOut();
