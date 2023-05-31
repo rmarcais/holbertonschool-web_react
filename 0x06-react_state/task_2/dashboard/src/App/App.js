@@ -46,7 +46,7 @@ class App extends React.Component {
     if (isCtrl && e.key === 'h') {
       e.preventDefault();
       alert('Logging you out');
-      this.logOut();
+      this.state.logOut();
     }
   }
 
@@ -77,10 +77,11 @@ class App extends React.Component {
   render() {
     const footerText = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`;
     const value = {user: this.state.user, logOut: this.state.logOut};
+    const { displayDrawer } = this.state;
     return (
       <AppContext.Provider value={value}>
         <Notifications listNotifications={listNotifications}
-                       displayDrawer={this.state.displayDrawer}
+                       displayDrawer={displayDrawer}
                        handleDisplayDrawer={this.handleDisplayDrawer}
                        handleHideDrawer={this.handleHideDrawer}/>
         <div className={css(styles.app)}>

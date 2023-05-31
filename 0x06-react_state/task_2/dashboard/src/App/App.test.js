@@ -45,20 +45,17 @@ describe('Tests the App component', () => {
     it('checks that after calling handleDisplayDrawer, the state should now be true', () => {
         wrapper.setState({displayDrawer: false});
         expect(wrapper.state().displayDrawer).toBe(false);
-        const instance = wrapper.instance();
-        instance.handleDisplayDrawer();
+        wrapper.instance().handleDisplayDrawer();
         expect(wrapper.state().displayDrawer).toBe(true);
     });
     it('checks that after calling handleHideDrawer, the state should now be true', () => {
         wrapper.setState({displayDrawer: true});
         expect(wrapper.state().displayDrawer).toBe(true);
-        const instance = wrapper.instance();
-        instance.handleHideDrawer();
+        wrapper.instance().handleHideDrawer();
         expect(wrapper.state().displayDrawer).toBe(false);
     });
     it('checks that the logIn function updates the state correctly', () => {
-        const instance = wrapper.instance();
-        instance.logIn();
+        wrapper.instance().logIn();
         expect(wrapper.state().user.isLoggedIn).toBe(true);
     });
 });
@@ -85,8 +82,7 @@ describe('Tests the App component when isLoggedIn is true', () => {
     it('checks that the logOut function updates the state correctly', () => {
         const wrapper = shallow(<App/>);
         wrapper.setState({user});
-        const instance = wrapper.instance();
-        instance.logOut();
+        wrapper.instance().logOut();
         expect(wrapper.state().user.isLoggedIn).toBe(false);
     });
 });
