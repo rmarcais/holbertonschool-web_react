@@ -1,6 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import BodySection from './BodySection';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+});
+
+afterAll(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
 
 describe('Tests the BodySection component', () => {
     it('Tests that shallowing the component should render correctly the children and one h2 element', () => {

@@ -1,6 +1,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from "./App";
+import { StyleSheetTestUtils } from 'aphrodite';
+
+beforeAll(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+});
+
+afterAll(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
 
 describe('Tests the App component', () => {
     let wrapper;
