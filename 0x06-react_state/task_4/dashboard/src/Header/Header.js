@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import AppContext from '../App/AppContext';
-import PropTypes from 'prop-types';
 
 class Header extends React.Component {
     render() {
@@ -22,18 +21,6 @@ class Header extends React.Component {
     }
 }
 Header.contextType = AppContext;
-
-Header.propTypes = {
-  text: PropTypes.string,
-  src: PropTypes.object,
-  alt: PropTypes.string
-};
-
-Header.defaultProps = {
-    text: null,
-    src: {},
-    alt: ''
-};
 
 const styles = StyleSheet.create({
     appHeader: {
