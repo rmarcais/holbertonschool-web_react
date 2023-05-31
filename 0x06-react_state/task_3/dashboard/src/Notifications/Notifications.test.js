@@ -58,12 +58,6 @@ describe('Tests the Notifications component', () => {
         const p = wrapper.find('[className^="notifications"] NotificationItem:first-child');
         expect(p).toHaveLength(1);
     });
-    it('Tests that when calling the function markAsRead on an instance of the component, the spy is being called with the right message', () => {
-        const mockConsole = jest.spyOn(console, 'log').mockImplementation(() => {});
-        wrapper.instance().markAsRead(1);
-        expect(mockConsole).toHaveBeenCalledWith('Notification 1 has been marked as read');
-        jest.restoreAllMocks();
-    });
     it('Tests that when updating the props of the component with the same list, the component doesn’t rerender', () => {
         const renderSpy = jest.spyOn(Notifications.prototype, 'render');
         const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}/>);

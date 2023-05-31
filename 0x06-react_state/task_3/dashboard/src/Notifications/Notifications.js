@@ -5,20 +5,9 @@ import closeIcon from '../assets/close-icon.png';
 import NotificationItemShape from './NotificationItemShape';
 import NotificationItem from './NotificationItem';
 
-class Notifications extends React.Component {
+class Notifications extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.markAsRead = this.markAsRead.bind(this);
-  }
-
-  markAsRead(id) {
-    console.log(`Notification ${id} has been marked as read`);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.displayDrawer !== nextProps.displayDrawer) return true;
-    if (this.props.listNotifications.length < nextProps.listNotifications.length) return true;
-    return false;
   }
 
   render() {
@@ -35,7 +24,7 @@ class Notifications extends React.Component {
     if (this.props.listNotifications.length === 0) content = <p>No new notification for now</p>;
     else {
       content = this.props.listNotifications.map((notification) =>
-      <NotificationItem key={notification.id} type={notification.type} value={notification.value} html={notification.html} markAsRead={this.markAsRead} id={notification.id}/>);
+      <NotificationItem key={notification.id} type={notification.type} value={notification.value} html={notification.html} markAsRead={this.props.markNotificationAsRead} id={notification.id}/>);
     }
     const { handleDisplayDrawer, handleHideDrawer } = this.props;
     return (
@@ -61,14 +50,16 @@ Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
   handleDisplayDrawer: PropTypes.func,
-  handleHideDrawer: PropTypes.func
+  handleHideDrawer: PropTypes.func,
+  markNotificationAsRead: PropTypes.func
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
   handleDisplayDrawer: () => {},
-  handleHideDrawer: () => {}
+  handleHideDrawer: () => {},
+  markNotificationAsRead: () => {}
 };
 
 const opacityAnimationFrames = {
