@@ -37,17 +37,16 @@ class Notifications extends React.Component {
       content = this.props.listNotifications.map((notification) =>
       <NotificationItem key={notification.id} type={notification.type} value={notification.value} html={notification.html} markAsRead={this.markAsRead} id={notification.id}/>);
     }
+    const { handleDisplayDrawer, handleHideDrawer } = this.props;
     return (
       <>
-        <div className={menuItemStyle} onClick={() => {this.props.handleDisplayDrawer()}}>
+        <div className={menuItemStyle} onClick={handleDisplayDrawer}>
           Your notifications
         </div>
         {this.props.displayDrawer ? (
           <div className={css(styles.notifications, styles.small)} id="Notifications">
             {this.props.listNotifications.length === 0 ? content : (<p>Here is the list of notifications</p>)}
-            <button aria-label='Close' onClick={() => {
-                                                        console.log('Close button has been clicked');
-                                                        this.props.handleHideDrawer();}} style={buttonStyle}>
+            <button aria-label='Close' onClick={handleHideDrawer} style={buttonStyle}>
               <img src={closeIcon} alt='Close icon' width={10}/>
             </button>
             {this.props.listNotifications.length === 0 ? null : (<ul className={css(styles.noPadding)}>{content}</ul>)}
