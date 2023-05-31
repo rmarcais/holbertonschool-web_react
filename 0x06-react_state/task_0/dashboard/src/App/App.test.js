@@ -41,15 +41,13 @@ describe('Tests the App component', () => {
     it('checks that after calling handleDisplayDrawer, the state should now be true', () => {
         wrapper.setState({displayDrawer: false});
         expect(wrapper.state().displayDrawer).toBe(false);
-        const instance = wrapper.instance();
-        instance.handleDisplayDrawer();
+        wrapper.instance().handleDisplayDrawer();
         expect(wrapper.state().displayDrawer).toBe(true);
     });
     it('checks that after calling handleHideDrawer, the state should now be true', () => {
         wrapper.setState({displayDrawer: true});
         expect(wrapper.state().displayDrawer).toBe(true);
-        const instance = wrapper.instance();
-        instance.handleHideDrawer();
+        wrapper.instance().handleHideDrawer();
         expect(wrapper.state().displayDrawer).toBe(false);
     });
 });
