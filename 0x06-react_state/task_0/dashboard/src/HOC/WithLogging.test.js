@@ -2,15 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import WithLogging from './WithLogging';
 import Login from '../Login/Login';
-import { StyleSheetTestUtils } from 'aphrodite';
-
-beforeAll(() => {
-    StyleSheetTestUtils.suppressStyleInjection();
-});
-
-afterAll(() => {
-  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
-});
 
 describe('Tests the HOC WithLogging', () => {
     let mockConsole;
