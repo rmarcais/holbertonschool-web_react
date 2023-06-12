@@ -11,7 +11,5 @@ const map = Map({
 
 const map2 = map.set(2, 'Benjamin').set(4, 'Olivier');
 
-console.log(map2.toJS());
-
 export { map };
 export { map2 };
