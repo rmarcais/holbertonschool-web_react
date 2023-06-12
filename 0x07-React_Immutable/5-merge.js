@@ -11,5 +11,5 @@ export function mergeElements(page1, page2) {
   const map1 = Map(page1);
   const map2 = Map(page2);
 
-  return List(map1.merge(map2).values());
+  return map1.merge(map2);
 }
