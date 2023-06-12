@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-const map = Map({
+const map = new Map({
   1: 'Liam',
   2: 'Noah',
   3: 'Elijah',
