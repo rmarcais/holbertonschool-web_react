@@ -52,7 +52,13 @@ export function loginRequest(email, password) {
         dispatch(login(email, password));
 
         return fetch('http://localhost:8564/login-success.json')
-        .then((res) => dispatch(loginSuccess()))
+        .then((res) => {
+            if (res.status <= 301) {
+                dispatch(loginSuccess());
+            } else {
+                dispatch(loginFailure());
+            }
+        })  
         .catch((err) => dispatch(loginFailure()))
     };
 }
