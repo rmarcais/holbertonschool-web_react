@@ -17,27 +17,27 @@ export const appInitialState = {
 
 export function uiReducer(state = appInitialState, action) {
     switch (action.type) {
-        case 'DISPLAY_NOTIFICATION_DRAWER':
+        case DISPLAY_NOTIFICATION_DRAWER:
             return {
                 ...state,
                 isNotificationDrawerVisible: true
             };
-        case 'HIDE_NOTIFICATION_DRAWER':
+        case HIDE_NOTIFICATION_DRAWER:
             return {
                 ...state,
                 isNotificationDrawerVisible: false
             };
-        case 'LOGIN_SUCCESS':
+        case LOGIN_SUCCESS:
             return {
                 ...state,
                 isUserLoggedIn: true
             };
-        case 'LOGIN_FAILURE':
+        case LOGIN_FAILURE:
             return {
                 ...state,
                 isUserLoggedIn: false
             };
-        case 'LOGOUT':
+        case LOGOUT:
             return {
                 ...state,
                 isUserLoggedIn: false
