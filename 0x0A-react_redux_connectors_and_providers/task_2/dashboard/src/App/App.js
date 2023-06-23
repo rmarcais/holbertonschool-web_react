@@ -10,7 +10,7 @@ import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
 import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
-import { user, logOut } from './AppContext';
+import { user } from './AppContext';
 import AppContext from './AppContext';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

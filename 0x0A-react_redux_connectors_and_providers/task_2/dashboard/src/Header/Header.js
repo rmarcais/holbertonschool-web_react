@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import AppContext from '../App/AppContext';
+import { connect } from 'react-redux';
+import { logout } from '../actions/uiActionCreators';
 
 class Header extends React.Component {
     render() {
@@ -10,9 +12,9 @@ class Header extends React.Component {
                     <img src={this.props.src} alt={this.props.alt} className={css(styles.appHeaderImg)}/>
                     <h1>{this.props.text}</h1>
                 </header>
-                {this.context.user.isLoggedIn ? (
+                {this.props.user ? (
                     <section id='logoutSection'>
-                        Welcome <strong>{this.context.user.email}</strong> <a onClick={() => {this.context.logOut()}}><em>(logout)</em></a>
+                        Welcome <strong>{this.context.user.email}</strong> <a onClick={() => {this.props.logout()}}><em>(logout)</em></a>
                     </section>
                 ) : null}
                 
@@ -20,7 +22,6 @@ class Header extends React.Component {
         );
     }
 }
-Header.contextType = AppContext;
 
 const styles = StyleSheet.create({
     appHeader: {
@@ -37,4 +38,18 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Header;
+export function mapStateToProps(state) {
+    return {
+        user: state.get('user')
+    };
+}
+
+export function mapDispatchToProps(dispatch) {
+    return {
+        logout: dispatch(logout())
+    };
+}
+
+export default connect(mapStateToProps)(Header);
+
+export { Header };
