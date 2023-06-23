@@ -27,13 +27,13 @@ export function uiReducer(state = Map(appInitialState), action) {
         case LOGIN_SUCCESS:
             return state.set('isUserLoggedIn', true);
         case LOGIN_FAILURE:
-            const updatedState = state.withMutations((state) => {
-                state.set('isUserLoggedIn', false);
-                state.set('user', null);
-            })
-            return updatedState;
-        case LOGOUT:
             return state.set('isUserLoggedIn', false);
+        case LOGOUT:
+            const updatedState = state.withMutations((state) => {
+                state.set('isUserLoggedIn', false),
+                state.set('user', null)
+            });
+            return updatedState;
         default:
             return state;
     }

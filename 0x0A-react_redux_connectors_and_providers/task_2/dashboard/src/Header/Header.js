@@ -14,7 +14,7 @@ class Header extends React.Component {
                 </header>
                 {this.props.user ? (
                     <section id='logoutSection'>
-                        Welcome <strong>{this.context.user.email}</strong> <a onClick={() => {this.props.logout()}}><em>(logout)</em></a>
+                        Welcome <strong>{this.props.user.email}</strong> <a onClick={() => {this.props.logout()}}><em>(logout)</em></a>
                     </section>
                 ) : null}
                 
@@ -46,10 +46,10 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        logout: dispatch(logout())
+        logout: () => dispatch(logout())
     };
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 export { Header };

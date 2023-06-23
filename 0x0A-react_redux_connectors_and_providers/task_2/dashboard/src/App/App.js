@@ -74,7 +74,7 @@ class App extends React.Component {
     const { listNotifications } = this.state;
     const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
     const { login, logout } = this.props;
-    const value = {user: this.state.user, logOut: logout};
+    const value = {user: this.state.user};
     return (
       <AppContext.Provider value={value}>
         <Notifications listNotifications={listNotifications}
@@ -85,7 +85,7 @@ class App extends React.Component {
         <div className={css(styles.app)}>
           <Header text='School dashboard' src={logo} alt='Holberton logo'/>
           <div className={css(styles.body)}>
-            {this.state.user.isLoggedIn ? (
+            {this.props.isLoggedIn ? (
               <BodySectionWithMarginBottom title="Course list ">
                 <CourseList listCourses={listCourses}/>
               </BodySectionWithMarginBottom> 
@@ -109,6 +109,7 @@ class App extends React.Component {
 }
 
 export function mapStateToProps(state) {
+  console.log(state.toJS());
   return {
     isLoggedIn: state.get('isUserLoggedIn'),
     displayDrawer: state.get('isNotificationDrawerVisible')
@@ -119,7 +120,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     displayNotificationDrawer: () => dispatch(displayNotificationDrawer()),
     hideNotificationDrawer: () => dispatch(hideNotificationDrawer()),
-    login: () => dispatch(loginRequest()),
+    login: (email, password) => dispatch(loginRequest(email, password)),
     logout: () => dispatch(logout())
   };
 }
