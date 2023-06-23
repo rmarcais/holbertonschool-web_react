@@ -12,6 +12,7 @@ import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import { user, logOut } from './AppContext';
 import AppContext from './AppContext';
+import { connect } from 'react-redux';
 
 const listCourses = [
   { id: 1, name: 'ES6', credit: 60 },
@@ -120,6 +121,14 @@ class App extends React.Component {
   }
 }
 
+export function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.isUserLoggedIn
+  };
+}
+
+export default connect(mapStateToProps)(App);
+
 const styles = StyleSheet.create({
   app: {
     fontFamily: 'sans-serif',
@@ -143,4 +152,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export { App };
