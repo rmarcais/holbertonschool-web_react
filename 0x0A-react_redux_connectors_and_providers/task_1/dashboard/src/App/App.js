@@ -87,7 +87,8 @@ class App extends React.Component {
   render() {
     const footerText = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`;
     const value = {user: this.state.user, logOut: this.state.logOut};
-    const { displayDrawer, listNotifications } = this.state;
+    const { listNotifications } = this.state;
+    const { displayDrawer } = this.props;
     return (
       <AppContext.Provider value={value}>
         <Notifications listNotifications={listNotifications}
@@ -123,7 +124,8 @@ class App extends React.Component {
 
 export function mapStateToProps(state) {
   return {
-    isLoggedIn: state.isUserLoggedIn
+    isLoggedIn: state.isUserLoggedIn,
+    displayDrawer: state.isNotificationDrawerVisible
   };
 }
 
