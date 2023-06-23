@@ -13,6 +13,7 @@ import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBot
 import { user, logOut } from './AppContext';
 import AppContext from './AppContext';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { displayNotificationDrawer, hideNotificationDrawer } from '../actions/uiActionCreators';
 
 const listCourses = [
@@ -35,7 +36,6 @@ class App extends React.Component {
     this.logOut = this.logOut.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
     this.state = {
-      displayDrawer: false,
       user,
       logOut: this.logOut,
       listNotifications
@@ -115,8 +115,8 @@ class App extends React.Component {
 
 export function mapStateToProps(state) {
   return {
-    isLoggedIn: state.isUserLoggedIn,
-    displayDrawer: state.isNotificationDrawerVisible
+    isLoggedIn: state.get('isUserLoggedIn'),
+    displayDrawer: state.get('isNotificationDrawerVisible')
   };
 }
 
@@ -151,5 +151,19 @@ const styles = StyleSheet.create({
     borderTop: 'solid #e11d3f'
   }
 });
+
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  displayDrawer: PropTypes.bool,
+  displayNotificationDrawer: PropTypes.func,
+  hideNotificationDrawer: PropTypes.func
+};
+
+App.defaultProps = {
+  isLoggedIn: false,
+  displayDrawer: false,
+  displayNotificationDrawer: () => {},
+  hideNotificationDrawer: () => {}
+};
 
 export { App };
