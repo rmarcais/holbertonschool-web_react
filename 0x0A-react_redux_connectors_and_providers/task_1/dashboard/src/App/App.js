@@ -13,6 +13,7 @@ import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBot
 import { user, logOut } from './AppContext';
 import AppContext from './AppContext';
 import { connect } from 'react-redux';
+import { displayNotificationDrawer, hideNotificationDrawer } from '../actions/uiActionCreators';
 
 const listCourses = [
   { id: 1, name: 'ES6', credit: 60 },
@@ -30,8 +31,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleKey = this.handleKey.bind(this);
-    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
-    this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
@@ -51,14 +50,6 @@ class App extends React.Component {
       alert('Logging you out');
       this.state.logOut();
     }
-  }
-
-  handleDisplayDrawer() {
-    this.setState({displayDrawer: true});
-  }
-
-  handleHideDrawer() {
-    this.setState({displayDrawer: false});
   }
 
   logIn(email, password) {
@@ -88,13 +79,13 @@ class App extends React.Component {
     const footerText = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`;
     const value = {user: this.state.user, logOut: this.state.logOut};
     const { listNotifications } = this.state;
-    const { displayDrawer } = this.props;
+    const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
     return (
       <AppContext.Provider value={value}>
         <Notifications listNotifications={listNotifications}
                        displayDrawer={displayDrawer}
-                       handleDisplayDrawer={this.handleDisplayDrawer}
-                       handleHideDrawer={this.handleHideDrawer}
+                       handleDisplayDrawer={displayNotificationDrawer}
+                       handleHideDrawer={hideNotificationDrawer}
                        markNotificationAsRead={this.markNotificationAsRead}/>
         <div className={css(styles.app)}>
           <Header text='School dashboard' src={logo} alt='Holberton logo'/>
@@ -129,7 +120,14 @@ export function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+export function mapDispatchToProps(dispatch) {
+  return {
+    displayNotificationDrawer: () => dispatch(displayNotificationDrawer()),
+    hideNotificationDrawer: () => dispatch(hideNotificationDrawer())
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 const styles = StyleSheet.create({
   app: {
