@@ -123,7 +123,7 @@ class App extends React.Component {
 
 export function mapStateToProps(state) {
   return {
-    isLoggedIn: state.isUserLoggedIn
+    isLoggedIn: state.get('isUserLoggedIn')
   };
 }
 
