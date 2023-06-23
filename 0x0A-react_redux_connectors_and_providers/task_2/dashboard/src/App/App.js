@@ -14,7 +14,12 @@ import { user, logOut } from './AppContext';
 import AppContext from './AppContext';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { displayNotificationDrawer, hideNotificationDrawer } from '../actions/uiActionCreators';
+import {
+  displayNotificationDrawer,
+  hideNotificationDrawer,
+  loginRequest,
+  logout
+} from '../actions/uiActionCreators';
 
 const listCourses = [
   { id: 1, name: 'ES6', credit: 60 },
@@ -37,7 +42,6 @@ class App extends React.Component {
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
     this.state = {
       user,
-      logOut: this.logOut,
       listNotifications
     };
   }
@@ -48,16 +52,8 @@ class App extends React.Component {
     if (isCtrl && e.key === 'h') {
       e.preventDefault();
       alert('Logging you out');
-      this.state.logOut();
+      this.props.logout();
     }
-  }
-
-  logIn(email, password) {
-    this.setState({user: { email, password, isLoggedIn: true}});
-  }
-
-  logOut() {
-    this.setState({user});
   }
 
   markNotificationAsRead(id) {
@@ -77,9 +73,10 @@ class App extends React.Component {
 
   render() {
     const footerText = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`;
-    const value = {user: this.state.user, logOut: this.state.logOut};
     const { listNotifications } = this.state;
     const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
+    const { login, logout } = this.props;
+    const value = {user: this.state.user, logOut: logout};
     return (
       <AppContext.Provider value={value}>
         <Notifications listNotifications={listNotifications}
@@ -96,7 +93,7 @@ class App extends React.Component {
               </BodySectionWithMarginBottom> 
             ) : (
               <BodySectionWithMarginBottom title="Log in to continue">
-                <Login text="Login to access the full dashboard" logIn={this.logIn}/>
+                <Login text="Login to access the full dashboard" logIn={login}/>
               </BodySectionWithMarginBottom>
             )}
             <BodySection title="News from the School">
@@ -123,7 +120,9 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
   return {
     displayNotificationDrawer: () => dispatch(displayNotificationDrawer()),
-    hideNotificationDrawer: () => dispatch(hideNotificationDrawer())
+    hideNotificationDrawer: () => dispatch(hideNotificationDrawer()),
+    login: () => dispatch(loginRequest()),
+    logout: () => dispatch(logout())
   };
 }
 
