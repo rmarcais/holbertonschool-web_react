@@ -1,13 +1,14 @@
-import React, {useContext} from "react";
+import React from "react";
 import AppContext from "../App/AppContext";
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export default function Footer(props) {
-    const value = useContext(AppContext);
+export function Footer(props) {
+    const { user } = props;
     return (
       <>
         <p>{props.text}</p>
-        {value.user.isLoggedIn ? (
+        {user ? (
           <p><a href="">Contact us</a></p>
         ) : null}
       </>
@@ -15,9 +16,19 @@ export default function Footer(props) {
 }
 
 Footer.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
+  user: PropTypes.object
 };
 
 Footer.defaultProps = {
-  text: null
+  text: null,
+  user: null
 };
+
+export function mapStateToProps(state) {
+  return {
+    user: state.get('user')
+  };
+}
+
+export default connect(mapStateToProps)(Footer);
