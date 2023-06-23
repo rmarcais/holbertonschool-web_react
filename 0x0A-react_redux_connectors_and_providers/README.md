@@ -16,11 +16,11 @@ At the end of this project, you are expected to be able to explain to anyone, **
 - How to use Redux’s dev tools to debug the state of your application
 
 ## Requirements
-- Allowed editors: vi, vim, emacs, Visual Studio Code
+- Allowed editors: `vi`, `vim`, `emacs`, `Visual Studio Code`
 - All your files should end with a new line
-- A README.md file, at the root of the folder of the project, is mandatory
-- All your files will be interpreted/compiled on Ubuntu 22.04 LTS using node 16.x.x and npm 8.x.x
-- Push all of your files, including package.json and .babelrc
+- A `README.md` file, at the root of the folder of the project, is mandatory
+- All your files will be interpreted/compiled on Ubuntu 22.04 LTS using node `16.x.x` and npm `8.x.x`
+- Push all of your files, including `package.json` and `.babelrc`
 - All of your functions must be exported
 
 ## Provided files
