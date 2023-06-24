@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import AppContext from '../App/AppContext';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { logout } from '../actions/uiActionCreators';
 
 class Header extends React.Component {
@@ -51,5 +51,15 @@ export function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+Header.propTypes = {
+    user: PropTypes.object,
+    logout: PropTypes.func
+}
+
+Header.defaultProps = {
+    user: null,
+    logout: () => {}
+}
 
 export { Header };

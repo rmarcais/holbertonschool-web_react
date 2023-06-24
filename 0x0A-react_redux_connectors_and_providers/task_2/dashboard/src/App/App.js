@@ -109,7 +109,6 @@ class App extends React.Component {
 }
 
 export function mapStateToProps(state) {
-  console.log(state.toJS());
   return {
     isLoggedIn: state.get('isUserLoggedIn'),
     displayDrawer: state.get('isNotificationDrawerVisible')
@@ -154,14 +153,18 @@ App.propTypes = {
   isLoggedIn: PropTypes.bool,
   displayDrawer: PropTypes.bool,
   displayNotificationDrawer: PropTypes.func,
-  hideNotificationDrawer: PropTypes.func
+  hideNotificationDrawer: PropTypes.func,
+  login: PropTypes.func,
+  logout: PropTypes.func
 };
 
 App.defaultProps = {
   isLoggedIn: false,
   displayDrawer: false,
   displayNotificationDrawer: () => {},
-  hideNotificationDrawer: () => {}
+  hideNotificationDrawer: () => {},
+  login: () => {},
+  logout: () => {}
 };
 
 export { App };
