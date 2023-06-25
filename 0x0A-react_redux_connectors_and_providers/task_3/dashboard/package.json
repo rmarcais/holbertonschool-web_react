@@ -10,7 +10,6 @@
     "test-watch": "jest --watch"
   },
   "dependencies": {
-    "@redux-devtools/extension": "^3.2.5",
     "aphrodite": "^2.4.0",
     "immutable": "^4.3.0",
     "normalizr": "^3.6.2",
