@@ -82,7 +82,6 @@ export function mapStateToProps(state) {
 export function mapDispatchToProps(dispatch) {
   return {
     fetchNotifications: () => dispatch(fetchNotifications()),
-    markNotificationAsRead: () => dispatch()
   };
 }
 
