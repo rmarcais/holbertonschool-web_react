@@ -20,14 +20,14 @@ NotificationItem.propTypes = {
     }),
     type: PropTypes.string.isRequired,
     markAsRead: PropTypes.func,
-    id: PropTypes.number
+    id: PropTypes.string
 };
 
 NotificationItem.defaultProps = {
     type: 'default',
     html: null,
     markAsRead: () => {},
-    id: 0
+    id: ''
 };
 
 const styles = StyleSheet.create({

@@ -38,6 +38,7 @@ export function fetchNotifications() {
         dispatch(setLoadingState(true));
 
         return fetch('http://localhost:8564/notifications.json')
+        .then((data) => data.json())
         .then((data) => {
             dispatch(setNotifications(data));
         })

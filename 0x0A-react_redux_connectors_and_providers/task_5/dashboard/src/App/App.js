@@ -31,10 +31,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleKey = this.handleKey.bind(this);
-    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
     this.state = {
-      user,
-      listNotifications
+      user
     };
   }
 
@@ -66,8 +64,7 @@ class App extends React.Component {
       <AppContext.Provider value={value}>
         <Notifications displayDrawer={displayDrawer}
                        handleDisplayDrawer={displayNotificationDrawer}
-                       handleHideDrawer={hideNotificationDrawer}
-                       markNotificationAsRead={this.markNotificationAsRead}/>
+                       handleHideDrawer={hideNotificationDrawer}/>
         <div className={css(styles.app)}>
           <Header text='School dashboard' src={logo} alt='Holberton logo'/>
           <div className={css(styles.body)}>
