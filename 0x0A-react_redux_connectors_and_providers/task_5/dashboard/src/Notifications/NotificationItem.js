@@ -20,7 +20,10 @@ NotificationItem.propTypes = {
     }),
     type: PropTypes.string.isRequired,
     markAsRead: PropTypes.func,
-    id: PropTypes.string
+    id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ])
 };
 
 NotificationItem.defaultProps = {

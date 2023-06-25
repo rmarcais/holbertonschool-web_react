@@ -3,7 +3,6 @@ import { StyleSheet, css } from 'aphrodite';
 import logo from '../assets/holberton_logo.jpg';
 import { getFullYear, getFooterCopy } from '../utils/utils';
 import Notifications from '../Notifications/Notifications';
-import { getLatestNotification } from '../utils/utils';
 import Login from '../Login/Login';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -56,9 +55,8 @@ class App extends React.Component {
 
   render() {
     const footerText = `Copyright ${getFullYear()} - ${getFooterCopy(true)}`;
-    const { listNotifications } = this.state;
     const { displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
-    const { login, logout } = this.props;
+    const { login } = this.props;
     const value = {user: this.state.user};
     return (
       <AppContext.Provider value={value}>
@@ -114,7 +112,7 @@ const styles = StyleSheet.create({
     fontFamily: 'sans-serif',
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100%'
+    minHeight: '100%',
   },
   body: {
     marginTop: '1rem',

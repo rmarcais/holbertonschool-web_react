@@ -22,7 +22,8 @@ describe('Test suite for notificationReducer', () => {
               "1": { id: 1, isRead: false, type: "default", value: "New course available" },
               "2": { id: 2, isRead: false, type: "urgent", value: "New resume available" },
               "3": { id: 3, isRead: false, type: "urgent", value: "New data available" }
-            }
+            },
+            loading: false
         };
         expect(notificationReducer(undefined, action).toJS()).toEqual(expectedState);
     });
@@ -34,7 +35,8 @@ describe('Test suite for notificationReducer', () => {
             "1": { id: 1, isRead: false, type: "default", value: "New course available" },
             "2": { id: 2, isRead: false, type: "urgent", value: "New resume available" },
             "3": { id: 3, isRead: false, type: "urgent", value: "New data available" }
-          }
+          },
+          loading: false
         };
         const expectedState = {
           filter: "DEFAULT",
@@ -42,7 +44,8 @@ describe('Test suite for notificationReducer', () => {
             "1": { id: 1, isRead: false, type: "default", value: "New course available" },
             "2": { id: 2, isRead: true, type: "urgent", value: "New resume available" },
             "3": { id: 3, isRead: false, type: "urgent", value: "New data available" }
-          }
+          },
+          loading: false
       };
         expect(notificationReducer(Map(initialState), action).toJS()).toEqual(expectedState);
     });
@@ -54,7 +57,8 @@ describe('Test suite for notificationReducer', () => {
             "1": { id: 1, isRead: false, type: "default", value: "New course available" },
             "2": { id: 2, isRead: true, type: "urgent", value: "New resume available" },
             "3": { id: 3, isRead: false, type: "urgent", value: "New data available" }
-          }
+          },
+          loading: false
       };
         const expectedState = {
           filter: "URGENT",
@@ -62,7 +66,8 @@ describe('Test suite for notificationReducer', () => {
             "1": { id: 1, isRead: false, type: "default", value: "New course available" },
             "2": { id: 2, isRead: true, type: "urgent", value: "New resume available" },
             "3": { id: 3, isRead: false, type: "urgent", value: "New data available" }
-          }
+          },
+          loading: false
       };
         expect(notificationReducer(Map(initialState), action).toJS()).toEqual(expectedState);
     });
