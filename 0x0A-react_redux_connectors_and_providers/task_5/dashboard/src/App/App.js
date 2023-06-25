@@ -27,12 +27,6 @@ const listCourses = [
   { id: 3, name: 'React', credit: 40 }
 ];
 
-const listNotifications = [
-  { id: 1, type: 'default', value: 'New course available' },
-  { id: 2, type: 'urgent', value: 'New resume available' },
-  { id: 3, type: 'urgent', html: {__html: getLatestNotification()} }
-];
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -54,13 +48,6 @@ class App extends React.Component {
     }
   }
 
-  markNotificationAsRead(id) {
-    const updatedList = this.state.listNotifications.filter((notification) => {
-      return notification.id !== id;
-    });
-    this.setState({listNotifications: updatedList});
-  }
-
   componentDidMount() {
     window.addEventListener('keydown', this.handleKey);
   }
@@ -77,8 +64,7 @@ class App extends React.Component {
     const value = {user: this.state.user};
     return (
       <AppContext.Provider value={value}>
-        <Notifications listNotifications={listNotifications}
-                       displayDrawer={displayDrawer}
+        <Notifications displayDrawer={displayDrawer}
                        handleDisplayDrawer={displayNotificationDrawer}
                        handleHideDrawer={hideNotificationDrawer}
                        markNotificationAsRead={this.markNotificationAsRead}/>
