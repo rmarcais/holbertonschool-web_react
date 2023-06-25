@@ -4,10 +4,16 @@ import { StyleSheet, css } from 'aphrodite';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItemShape from './NotificationItemShape';
 import NotificationItem from './NotificationItem';
+import { fetchNotifications } from '../actions/notificationActionCreators';
+import { connect } from 'react-redux';
 
 class Notifications extends React.PureComponent {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchNotifications();
   }
 
   render() {
@@ -61,6 +67,20 @@ Notifications.defaultProps = {
   handleHideDrawer: () => {},
   markNotificationAsRead: () => {}
 };
+
+export function mapStateToProps(state) {
+  return {
+    listNotifications: state.notifications
+  };
+}
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    fetchNotifications: () => dispatch(fetchNotifications())
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications)
 
 const opacityAnimationFrames = {
   '0%': {
@@ -131,4 +151,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Notifications;
+export { Notifications };
