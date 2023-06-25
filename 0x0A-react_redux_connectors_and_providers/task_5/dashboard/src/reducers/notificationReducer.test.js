@@ -1,5 +1,5 @@
-import { FETCH_NOTIFICATIONS_SUCCESS } from "../actions/notificationActionTypes";
-import { setNotificationFilter, markAsAread } from "../actions/notificationActionCreators";
+import { FETCH_NOTIFICATIONS_SUCCESS, SET_LOADING_STATE } from "../actions/notificationActionTypes";
+import { setNotificationFilter, markAsAread, setLoadingState } from "../actions/notificationActionCreators";
 import { notificationsState, notificationReducer } from "./notificationReducer";
 import { Map } from 'immutable';
 
@@ -70,5 +70,15 @@ describe('Test suite for notificationReducer', () => {
           loading: false
       };
         expect(notificationReducer(Map(initialState), action).toJS()).toEqual(expectedState);
+    });
+    it('Tests that SET_LOADING_STATE updates the reducer correctly', () => {
+      const action = setLoadingState(true);
+
+      const expectedState = {
+        ...notificationsState,
+        loading: true
+      }
+
+      expect(notificationReducer(undefined, action).toJS()).toEqual(expectedState);
     });
 });

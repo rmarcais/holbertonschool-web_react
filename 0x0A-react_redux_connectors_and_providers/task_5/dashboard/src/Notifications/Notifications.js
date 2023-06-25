@@ -60,6 +60,7 @@ Notifications.propTypes = {
   ]),
   handleDisplayDrawer: PropTypes.func,
   handleHideDrawer: PropTypes.func,
+  fetchNotifications: PropTypes.func,
   markNotificationAsRead: PropTypes.func
 };
 
@@ -68,7 +69,8 @@ Notifications.defaultProps = {
   listNotifications: {},
   handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
-  markNotificationAsRead: () => {}
+  markNotificationAsRead: () => {},
+  fetchNotifications: () => {}
 };
 
 export function mapStateToProps(state) {

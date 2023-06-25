@@ -114,6 +114,10 @@ describe('Tests the Notifications component', () => {
         button.simulate('click');
         expect(handleHideDrawer).toHaveBeenCalledTimes(1);
         handleHideDrawer.mockClear();
-        jest.restoreAllMocks();
+    });
+    it('Tests that the function fetchNotifications is called when the component is mounted', () => {
+        const fetchNotifications = jest.fn();
+        shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} fetchNotifications={fetchNotifications}/>);
+        expect(fetchNotifications).toHaveBeenCalledTimes(1);
     });
 });
