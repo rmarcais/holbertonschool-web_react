@@ -31,7 +31,7 @@ class Notifications extends React.PureComponent {
     if (noNewNotifications) content = <p>No new notification for now</p>;
     else {
       content = listNotifications.valueSeq().map((notif) =>
-        <NotificationItem key={notif.get('guid') || notif.id} type={notif.get('type')} value={notif.get('value')} html={notif.get('html')} markAsRead={this.props.markNotificationAsRead} id={notif.get('guid') || notif.id}/>
+        <NotificationItem key={notif.get('guid')} type={notif.get('type')} value={notif.get('value')} html={notif.get('html')} markAsRead={this.props.markNotificationAsRead} id={notif.get('guid')}/>
       );
     }
     const { handleDisplayDrawer, handleHideDrawer } = this.props;
