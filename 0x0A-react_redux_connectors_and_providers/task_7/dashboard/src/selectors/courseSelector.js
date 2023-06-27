@@ -1,4 +1,4 @@
-export function getCourses(state) {
+export function getListCourses(state) {
     const courses = state.courses;
     if (courses) {
         return courses.valueSeq();

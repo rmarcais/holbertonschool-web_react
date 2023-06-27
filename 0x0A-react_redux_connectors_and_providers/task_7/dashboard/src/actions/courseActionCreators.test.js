@@ -1,5 +1,5 @@
 import { selectCourse, unSelectCourse, fetchCourses } from "./courseActionCreators";
-import { SELECT_COURSE, UNSELECT_COURSE, SET_COURSES } from "./courseActionTypes";
+import { SELECT_COURSE, UNSELECT_COURSE, SET_COURSES, FETCH_COURSE_SUCCESS } from "./courseActionTypes";
 import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
@@ -26,7 +26,7 @@ describe('Action creators tests', () => {
 
         const expectedActions = [
             {
-                type: SET_COURSES,
+                type: FETCH_COURSE_SUCCESS,
                 data: []
             }
         ];

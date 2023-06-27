@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from 'enzyme';
-import CourseList from "./CourseList";
+import { CourseList } from "./CourseList";
 
 describe('Tests the CourseList component with an empty array', () => {
     it('Tests that CourseList renders without crashing', () => {

@@ -1,5 +1,5 @@
 import { courseReducer } from "../reducers/courseReducer";
-import { getCourses } from "./courseSelector";
+import { getListCourses } from "./courseSelector";
 import { FETCH_COURSE_SUCCESS } from "../actions/courseActionTypes";
 import { fromJS } from "immutable";
 
@@ -31,7 +31,7 @@ describe('Test suite for the course selector', () => {
         };
 
         initialState.courses = courseReducer(undefined, action);
-        const courses = getCourses(initialState);
+        const courses = getListCourses(initialState);
 
         expect(courses.count()).toBe(3);
     });
