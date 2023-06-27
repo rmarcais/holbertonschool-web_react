@@ -111,7 +111,7 @@ describe('Tests the Notifications component', () => {
         const handleHideDrawer = jest.fn();
         const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications}
                                                handleHideDrawer={handleHideDrawer} fetchNotifications={fetchNotifications}/>);
-        const button = wrapper.find('button');
+        const button = wrapper.find('#close');
         button.simulate('click');
         expect(handleHideDrawer).toHaveBeenCalledTimes(1);
         handleHideDrawer.mockClear();
@@ -120,5 +120,27 @@ describe('Tests the Notifications component', () => {
         const fetchNotifications = jest.fn();
         shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} fetchNotifications={fetchNotifications}/>);
         expect(fetchNotifications).toHaveBeenCalledTimes(1);
+    });
+    it('Tests that clicking on the first button should call setNotificationFilter with URGENT', () => {
+        const setNotificationFilter = jest.fn();
+        const wrapper = shallow(<Notifications displayDrawer={true}
+            listNotifications={listNotifications}
+            fetchNotifications={fetchNotifications}
+            setNotificationFilter={setNotificationFilter}/>);
+        const button = wrapper.find('#urgent-filter');
+        button.simulate('click');
+        expect(setNotificationFilter).toHaveBeenCalledTimes(1);
+        expect(setNotificationFilter).toHaveBeenCalledWith('URGENT');
+    });
+    it('Tests that clicking on the second button should call setNotificationFilter with DEFAULT', () => {
+        const setNotificationFilter = jest.fn();
+        const wrapper = shallow(<Notifications displayDrawer={true}
+            listNotifications={listNotifications}
+            fetchNotifications={fetchNotifications}
+            setNotificationFilter={setNotificationFilter}/>);
+        const button = wrapper.find('#default-filter');
+        button.simulate('click');
+        expect(setNotificationFilter).toHaveBeenCalledTimes(1);
+        expect(setNotificationFilter).toHaveBeenCalledWith('DEFAULT');
     });
 });

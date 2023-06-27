@@ -45,11 +45,11 @@ class Notifications extends React.PureComponent {
             {noNewNotifications ? content : (
             <>
             <p>Here is the list of notifications</p>
-            <button onClick={() => this.props.setNotificationFilter('URGENT')}>!!</button>
-            <button onClick={() => this.props.setNotificationFilter('DEFAULT')}>?</button>
+            <button id='urgent-filter' onClick={() => this.props.setNotificationFilter('URGENT')}>!!</button>
+            <button id='default-filter' onClick={() => this.props.setNotificationFilter('DEFAULT')}>?</button>
             </>
             )}
-            <button aria-label='Close' onClick={handleHideDrawer} style={buttonStyle}>
+            <button aria-label='Close' onClick={handleHideDrawer} style={buttonStyle} id='close'>
               <img src={closeIcon} alt='Close icon' width={10}/>
             </button>
             {noNewNotifications ? null : (<ul className={css(styles.noPadding)}>{content}</ul>)}
