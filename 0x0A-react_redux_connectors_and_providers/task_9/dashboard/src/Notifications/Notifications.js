@@ -3,61 +3,48 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
-import { fetchNotifications, markAsAread, setNotificationFilter } from '../actions/notificationActionCreators';
-import { getUnreadNotificationsByType } from '../selectors/notificationSelector';
-import { connect } from 'react-redux';
 
-class Notifications extends React.PureComponent {
-  constructor(props) {
-    super(props);
+export default function Notifications(props) {
+  const buttonStyle = {
+    background: 'transparent',
+    border: 'none',
+    position: "absolute",
+    top: 2,
+    right: 2
   }
-
-  componentDidMount() {
-    this.props.fetchNotifications();
-  }
-
-  render() {
-    const buttonStyle = {
-      background: 'transparent',
-      border: 'none',
-      position: "absolute",
-      top: 2,
-      right: 2
-    }
-    const menuItemStyle = css(this.props.displayDrawer ? styles.hidden : styles.menuItem);
-    let content;
-    let { listNotifications } = this.props;
-    let noNewNotifications = listNotifications.length === 0 || Object.keys(listNotifications).length === 0 || listNotifications.count() === 0
-    if (noNewNotifications) content = <p>No new notification for now</p>;
-    else {
-      content = listNotifications.valueSeq().map((notif) =>
-        <NotificationItem key={notif.get('guid')} type={notif.get('type')} value={notif.get('value')} html={notif.get('html')} markAsRead={this.props.markNotificationAsRead} id={notif.get('guid')}/>
-      );
-    }
-    const { handleDisplayDrawer, handleHideDrawer } = this.props;
-    return (
-      <>
-        <div className={menuItemStyle} onClick={handleDisplayDrawer}>
-          Your notifications
-        </div>
-        {this.props.displayDrawer ? (
-          <div className={css(styles.notifications, styles.small)} id="Notifications">
-            {noNewNotifications ? content : (
-            <>
-            <p>Here is the list of notifications</p>
-            <button id='urgent-filter' onClick={() => this.props.setNotificationFilter('URGENT')}>!!</button>
-            <button id='default-filter' onClick={() => this.props.setNotificationFilter('DEFAULT')}>?</button>
-            </>
-            )}
-            <button aria-label='Close' onClick={handleHideDrawer} style={buttonStyle} id='close'>
-              <img src={closeIcon} alt='Close icon' width={10}/>
-            </button>
-            {noNewNotifications ? null : (<ul className={css(styles.noPadding)}>{content}</ul>)}
-          </div>
-        ) : null}
-      </>
+  const menuItemStyle = css(props.displayDrawer ? styles.hidden : styles.menuItem);
+  let content;
+  let { listNotifications } = props;
+  let noNewNotifications = listNotifications.length === 0 || Object.keys(listNotifications).length === 0 || listNotifications.count() === 0
+  if (noNewNotifications) content = <p>No new notification for now</p>;
+  else {
+    content = listNotifications.valueSeq().map((notif) =>
+      <NotificationItem key={notif.get('guid')} type={notif.get('type')} value={notif.get('value')} html={notif.get('html')} markAsRead={props.markNotificationAsRead} id={notif.get('guid')}/>
     );
   }
+  const { handleDisplayDrawer, handleHideDrawer } = props;
+  return (
+    <>
+      <div className={menuItemStyle} onClick={handleDisplayDrawer}>
+        Your notifications
+      </div>
+      {props.displayDrawer ? (
+        <div className={css(styles.notifications, styles.small)} id="Notifications">
+          {noNewNotifications ? content : (
+          <>
+          <p>Here is the list of notifications</p>
+          <button id='urgent-filter' onClick={() => props.setNotificationFilter('URGENT')}>!!</button>
+          <button id='default-filter' onClick={() => props.setNotificationFilter('DEFAULT')}>?</button>
+          </>
+          )}
+          <button aria-label='Close' onClick={handleHideDrawer} style={buttonStyle} id='close'>
+            <img src={closeIcon} alt='Close icon' width={10}/>
+          </button>
+          {noNewNotifications ? null : (<ul className={css(styles.noPadding)}>{content}</ul>)}
+        </div>
+      ) : null}
+    </>
+  );
 }
 
 Notifications.propTypes = {
@@ -82,22 +69,6 @@ Notifications.defaultProps = {
   fetchNotifications: () => {},
   setNotificationFilter: () => {}
 };
-
-export function mapStateToProps(state) {
-  return {
-    listNotifications: getUnreadNotificationsByType(state)
-  };
-}
-
-export function mapDispatchToProps(dispatch) {
-  return {
-    fetchNotifications: () => dispatch(fetchNotifications()),
-    markNotificationAsRead: (id) => dispatch(markAsAread(id)),
-    setNotificationFilter: (filter) => dispatch(setNotificationFilter(filter))
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Notifications)
 
 const opacityAnimationFrames = {
   '0%': {
@@ -169,5 +140,3 @@ const styles = StyleSheet.create({
     }
   },
 });
-
-export { Notifications };

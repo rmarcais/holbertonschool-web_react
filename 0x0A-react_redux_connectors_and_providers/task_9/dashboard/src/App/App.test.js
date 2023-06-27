@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { App, mapStateToProps } from "./App";
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import Notifications from '../Notifications/Notifications';
+import NotificationsContainer from '../Notifications/NotificationsContainer';
 import CourseList from '../CourseList/CourseList';
 import { fromJS } from 'immutable';
 
@@ -16,7 +16,7 @@ describe('Tests the App component', () => {
         expect(wrapper.exists()).toBe(true);
     });
     it('should contain the Notifications component', () => {
-        expect(wrapper.find(Notifications)).toHaveLength(1);
+        expect(wrapper.find(NotificationsContainer)).toHaveLength(1);
     });
     it('should contain the Header component', () => {
         expect(wrapper.find(Header)).toHaveLength(1);

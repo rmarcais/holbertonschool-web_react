@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Notifications } from './Notifications';
+import Notifications from './Notifications';
 import { fromJS } from 'immutable';
 
 describe('Tests the Notifications component with an empty array', () => {
@@ -73,30 +73,6 @@ describe('Tests the Notifications component', () => {
         const p = wrapper.find('[className^="notifications"] NotificationItem:first-child');
         expect(p).toHaveLength(1);
     });
-    it('Tests that when updating the props of the component with the same list, the component doesn’t rerender', () => {
-        const renderSpy = jest.spyOn(Notifications.prototype, 'render');
-        const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} fetchNotifications={fetchNotifications}/>);
-
-        wrapper.setProps({ listNotifications: listNotifications });
-    
-        expect(renderSpy).toHaveBeenCalledTimes(1);
-        jest.restoreAllMocks();
-    });
-    it('Tests that when updating the props of the component with a longer list, the component does rerender', () => {
-        const updatedList = fromJS([
-            {guid: 1,type: 'default',value: 'New course available'},
-            {guid: 2,type: 'urgent',value: 'New resume available'},
-            {guid: 3,type: 'urgent',html: {__html: '<u>test</u>'}},
-            {guid: 4,type: 'urgent',html: {__html: '<u>test</u>'}}
-        ]);
-        const renderSpy = jest.spyOn(Notifications.prototype, 'render');
-        const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} fetchNotifications={fetchNotifications}/>);
-
-        wrapper.setProps({ listNotifications: updatedList });
-    
-        expect(renderSpy).toHaveBeenCalledTimes(2);
-        jest.restoreAllMocks();
-    });
     it('checks that clicking on the menu item calls handleDisplayDrawer', () => {
         const handleDisplayDrawer = jest.fn();
         const wrapper = shallow(<Notifications listNotifications={listNotifications}
@@ -115,11 +91,6 @@ describe('Tests the Notifications component', () => {
         button.simulate('click');
         expect(handleHideDrawer).toHaveBeenCalledTimes(1);
         handleHideDrawer.mockClear();
-    });
-    it('Tests that the function fetchNotifications is called when the component is mounted', () => {
-        const fetchNotifications = jest.fn();
-        shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} fetchNotifications={fetchNotifications}/>);
-        expect(fetchNotifications).toHaveBeenCalledTimes(1);
     });
     it('Tests that clicking on the first button should call setNotificationFilter with URGENT', () => {
         const setNotificationFilter = jest.fn();

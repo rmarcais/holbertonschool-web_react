@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import logo from '../assets/holberton_logo.jpg';
 import { getFullYear, getFooterCopy } from '../utils/utils';
-import Notifications from '../Notifications/Notifications';
+import NotificationsContainer from '../Notifications/NotificationsContainer';
 import Login from '../Login/Login';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -60,7 +60,7 @@ class App extends React.Component {
     const value = {user: this.state.user};
     return (
       <AppContext.Provider value={value}>
-        <Notifications displayDrawer={displayDrawer}
+        <NotificationsContainer displayDrawer={displayDrawer}
                        handleDisplayDrawer={displayNotificationDrawer}
                        handleHideDrawer={hideNotificationDrawer}/>
         <div className={css(styles.app)}>
