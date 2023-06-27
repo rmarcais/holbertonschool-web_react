@@ -32,7 +32,7 @@ describe('Test suite for the course selector', () => {
 
         initialState.courses = courseReducer(undefined, action);
         const courses = getCourses(initialState);
-        console.log(courses);
+
         expect(courses.count()).toBe(3);
     });
 });
