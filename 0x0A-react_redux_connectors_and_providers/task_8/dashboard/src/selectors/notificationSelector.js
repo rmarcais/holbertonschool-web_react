@@ -15,7 +15,7 @@ export const getUnreadNotificationsByType = createSelector(
     (state) => state.notifications.get('filter'),
     (state) => state.notifications.get('messages'),
     (filter, listNotifications) => {
-        if (listNotifications) return listNotifications;
+        if (!listNotifications) return listNotifications;
         else if (filter === 'URGENT') {
             return listNotifications.valueSeq().filter((notif) => notif.get('isRead') === false && notif.get('type') === 'urgent');
         }
